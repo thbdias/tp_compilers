@@ -1,0 +1,26 @@
+letra -> a..z | A..Z
+dígito -> 0..9
+espaço ->  
+sublinhado -> _
+ponto -> .
+vírgula -> ,
+ponto e vírgula -> ;
+dois pontos -> :
+abre parênteses -> (
+fecha parênteses -> )
+abre colchetes -> [
+fecha colchetes -> ]
+abre chaves -> {
+fecha chaves -> }
+mais -> +
+menos -> -
+abre aspas -> "
+fecha aspas -> "
+apóstrofo -> '
+barra -> /
+exclamação -> !
+interrogação -> ?
+maior -> >
+menor -> <
+igual -> =
+quebra de linha -> (bytes 0Dh e 0Ah)
