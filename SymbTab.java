@@ -47,6 +47,16 @@ public class SymbTab{
 	public static final byte BOOLEAN = 33;
 
 
+	/**
+      Funcao que transforma byte em string
+      @param num: byte a ser alterado
+      @return : valor alterado para string
+    */
+    private static String toString ( byte num ){
+        return (num + "");
+    }//end isNumber
+
+    
 
     /**
      	funcao de testes
