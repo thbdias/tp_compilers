@@ -48,6 +48,20 @@ public class SymbTab{
 
 
 	/**
+		metodo que inserte chave(key) e lexema(lex) na tabela de simbolos
+		@param key: chave de pesquisa na tabela de simbolos
+		@param lex: lexema que sera inserido na tabela de simbolos	
+	*/
+	public static void insertSymb (byte key, String lex){		
+
+		String chave = toString(key); //convertendo key para string
+		String min = lex.toLowerCase(); //passando lexema para minusculo
+		tabelaSimb.put(chave, min); //gravando key e lex na tabela de simbolos
+
+	}//end insertSymb
+
+
+	/**
       Funcao que transforma byte em string
       @param num: byte a ser alterado
       @return : valor alterado para string
@@ -56,7 +70,7 @@ public class SymbTab{
         return (num + "");
     }//end isNumber
 
-    
+
 
     /**
      	funcao de testes
