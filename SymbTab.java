@@ -48,6 +48,51 @@ public class SymbTab{
 
 
 	/**
+		metodo que inicializa a tabela de simbolos com 
+		as palavras reservadas e identificadores
+	*/
+	public static void inicialize (){
+		tabelaSimb = new Hashtable<String, String>(); 
+
+//                  (chave, lexema)
+		insertSymb (CONST, "const");
+		insertSymb (INTEGER, "integer");
+		insertSymb (BYTE, "byte");
+		insertSymb (STRING, "string");
+		insertSymb (WHILE, "while");
+		insertSymb (IF, "if");
+		insertSymb (ELSE, "else");
+		insertSymb (AND, "and");
+		insertSymb (OR, "or");
+		insertSymb (NOT, "not");
+		insertSymb (EQUAL, "==");
+		insertSymb (ASSIG, "=");
+		insertSymb (RPARENT, "(");
+		insertSymb (LPARENT, ")");
+		insertSymb (MENOR, "<");
+		insertSymb (MAIOR, ">");
+		insertSymb (DIFERENTE, "<>");
+		insertSymb (MAIORIGUAL, ">=");
+		insertSymb (MENORIGUAL, "<=");
+		insertSymb (COMMA, ",");
+		insertSymb (MAIS, "+");
+		insertSymb (MENOS, "-");
+		insertSymb (MULT, "*");
+		insertSymb (DIV, "/");
+		insertSymb (SEMICOLON, ";");
+		insertSymb (RCHAVE, "{");
+		insertSymb (LCHAVE, "}");
+		insertSymb (READLN, "readln");
+		insertSymb (WRITE, "write");
+		insertSymb (WRITELN, "writeln");
+		insertSymb (TRUE, "true");
+		insertSymb (FALSE, "false");
+		insertSymb (BOOLEAN, "boolean");
+
+	}//end inicialize
+
+
+	/**
 		metodo que inserte chave(key) e lexema(lex) na tabela de simbolos
 		@param key: chave de pesquisa na tabela de simbolos
 		@param lex: lexema que sera inserido na tabela de simbolos	
@@ -75,12 +120,19 @@ public class SymbTab{
     /**
      	funcao de testes
      */
-    public static void main(String[] args) {    	
-
+    public static void main(String[] args) {    
     	System.out.println("teste funcionando.");
+    	inicialize();
+    	
+    	//for (byte i = 1; i <= 33; i++){
+    	//	System.out.println ("teste = "+getLexToken(i));
+    	//}
+
+    	//String teste = toString(x);
+    	//System.out.println (teste);	    	
     	
     }
 
-}
+}//end class
 
 //.ao finalizar a classe SymbTab.java retirar os campos static dos metodos
