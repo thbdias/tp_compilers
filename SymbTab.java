@@ -107,6 +107,17 @@ public class SymbTab{
 
 
 	/**
+	 	metodo que busca o lexema de um token
+	 	@param key: chave que se refere ao token
+	 	@return: lexema encontrado
+	 */
+	public static String getLexToken (byte key){				
+		return (tabelaSimb.get(toString(key)));
+	}//end getKeyToken
+
+
+
+	/**
       Funcao que transforma byte em string
       @param num: byte a ser alterado
       @return : valor alterado para string
