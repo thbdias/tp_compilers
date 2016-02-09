@@ -1,8 +1,8 @@
 # tp_compiladores
 
 Students:
-	Herbert Alves Batista
-	Luiz Gustavo Avelino Mendes
+	Herbert Alves Batista / 
+	Luiz Gustavo Avelino Mendes / 
 	Thiago Henrique Balbino Dias
 
 Work for the discipline of compilers. Producing a compiler.
