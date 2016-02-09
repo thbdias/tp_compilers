@@ -9,4 +9,4 @@ Work for the discipline of compilers. Producing a compiler.
 
 IDE used: Sublime Text 3
 
-compiled from the command line.
+compiled from the command line
