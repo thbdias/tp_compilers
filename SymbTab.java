@@ -6,6 +6,9 @@
  */
 
 import java.util.Hashtable;
+import java.util.Set;
+import java.util.Iterator;
+import java.util.Map;
 
 public class SymbTab{
 
@@ -99,7 +102,7 @@ public class SymbTab{
 	*/
 	public static void insertSymb (byte key, String lex){		
 
-		String chave = toString(key); //convertendo key para string
+		String chave = byteToString(key); //convertendo key para string
 		String min = lex.toLowerCase(); //passando lexema para minusculo
 		tabelaSimb.put(chave, min); //gravando key e lex na tabela de simbolos
 
@@ -112,9 +115,30 @@ public class SymbTab{
 	 	@return: lexema encontrado
 	 */
 	public static String getLexToken (byte key){				
-		return (tabelaSimb.get(toString(key)));
+		return (tabelaSimb.get(byteToString(key)));
 	}//end getKeyToken
 
+
+	/**
+	 	metodo que busca a chave de um token
+	 	@param lex: chave que se refere ao token
+	 	@return: chave encontrado
+	 */
+	public static String getKeyToken (String lex){		
+		String key = "";
+		Set conjunto = tabelaSimb.entrySet();
+		Iterator i = conjunto.iterator();
+
+		while (i.hasNext()){
+			Map.Entry entrada = (Map.Entry) i.next();
+			Object obj = entrada.getValue();
+			if (obj.toString() == lex){
+				key = entrada.getKey().toString();
+			}
+		}//end while
+
+		return key;
+	}//end getKeyToken	
 
 
 	/**
@@ -122,7 +146,7 @@ public class SymbTab{
       @param num: byte a ser alterado
       @return : valor alterado para string
     */
-    private static String toString ( byte num ){
+    private static String byteToString ( byte num ){
         return (num + "");
     }//end isNumber
 
@@ -141,6 +165,10 @@ public class SymbTab{
 
     	//String teste = toString(x);
     	//System.out.println (teste);	    	
+    	
+    	
+    	System.out.println ("teste = " + getKeyToken(">="));
+    	
     	
     }
 
