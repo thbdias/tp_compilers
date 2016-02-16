@@ -1,6 +1,0 @@
-const		integer		byte		string		while		if
-else		and			or			not			==			=
-(			)			<			>			<>			>=
-<=			,			+			-			*			/
-;			{			}			readln		write		writeln
-TRUE		FALSE		boolean		
