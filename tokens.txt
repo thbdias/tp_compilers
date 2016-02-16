@@ -1,0 +1,21 @@
+*Enumeracao dos tokens da linguagem L
+
+1- palavras reservadas
+2- tokens
+3- atribuição (=)
+4- comparação (==)
+5- abre parenteses ( '(' )
+6- fecha parenteses ( ')' )
+7- maior (>)
+8- menor (<)
+9- diferente (<>)
+10- maior igual (>=)
+11- menor igual (<=)
+12- virgula (,)
+13- sinal mais (+)
+14- sinal menos (-)
+15- sinal mult (*)
+16- sinal div (/)
+17- ponto e virgula (;)
+18- abre chaves ({)
+19- fecha chaves (})
