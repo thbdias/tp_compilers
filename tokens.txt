@@ -1,3 +1,7 @@
+/*
+	arquivo criado apenas para vizualização da enumeração dos tokens que constam na linguagem L
+*/
+
 *Enumeracao dos tokens da linguagem L
 
 1- palavras reservadas
