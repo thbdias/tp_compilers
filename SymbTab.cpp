@@ -61,30 +61,8 @@ class SymbTab{
 			tabSimb[29][0] = "8";	tabSimb[29][1] = "/";			
 			tabSimb[30][0] = "9";	tabSimb[30][1] = "{";
 			tabSimb[31][0] = "10";	tabSimb[31][1] = "}";
-			tabSimb[32][0] = "11";	tabSimb[32][1] = "const";
-
-			//teste
-			/*
-			cout << "\n\nquant\tidToken\tlexema\n";
-			for (int i =0; i < 33; i++){
-				cout << "\n" << (i+1);
-				for (int j = 0; j < 2; j++){
-					cout << "\t" << tabSimb[i][j];
-				}
-			}*/
-			//end teste
+			tabSimb[32][0] = "11";	tabSimb[32][1] = "const";			
 			
 		}//end inicialize				
 	
 };//end class
-
-
-
-int main(int argc, char const *argv[])
-{
-	SymbTab symbTab;
-
-	symbTab.inicialize();
-	
-	return 0;
-}//end main
