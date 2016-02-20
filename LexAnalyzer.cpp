@@ -9,32 +9,11 @@
 #include <string.h>
 #include <iostream>
 #include "SymbTab.h"
+#include <fstream> //tratar arquivos
+using namespace std;
 
-class LexAnalyzer{
-	private:
-		void teste1(){
-			SymbTab tabela;
+LexAnalyzer::LexAnalyzer(){	
+}//construtor
 
-			tabela.inicialize();
-			tabela.exibir();
-		}//end teste1
-
-
-
-	public:
-		LexAnalyzer(){} //construtor
-		~LexAnalyzer(){} //destrutor
-
-		void controle (){
-			teste1();
-		}//end controle
-
-};
-
-int main(){
-	LexAnalyzer lex;
-
-	lex.controle();
-	
-	return 0;
-}
+LexAnalyzer::~LexAnalyzer(){	
+}//destrutor
