@@ -11,7 +11,7 @@
 	#include <stdio.h>
 	#include <string>
 	#include <iostream>
-	#include "SymbTab.h"
+	#include "SymbTab.h"	
 
 	class LexAnalyzer{
 		public:
@@ -20,7 +20,7 @@
 			LexAnalyzer(); //construtor
 			~LexAnalyzer(); //destrutor
 			void testeLex();
-			void abrirFonte(string arq);
+			void lerArq(const char *arq);
 			void proxToken();
 	};//end class
 

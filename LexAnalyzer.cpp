@@ -10,7 +10,7 @@
 #include <iostream>
 #include "LexAnalyzer.h"
 #include "SymbTab.h"
-#include <fstream> //tratar arquivos
+#include <fstream.h> //tratar arquivos
 using namespace std;
 
 LexAnalyzer::LexAnalyzer(){		
@@ -27,8 +27,16 @@ void LexAnalyzer::testeLex(){
 }
 
 
-void LexAnalyzer::abrirFonte(string arq){
-	cout << "\nentrou aki fonte\n"; //teste
+void LexAnalyzer::lerArq(const char * arq){
+	cout << "\nentrou aki fonte\n"; //teste	
+
+	ifstream fin (arq); //abre arquivo para leitura
+	char ch; //char que sera lido do arquivo
+
+		while (fin.get(ch)) //le um char do arquivo
+			cout << ch;
+
+	fin.close();
 }//end abrirFonte
 
 
