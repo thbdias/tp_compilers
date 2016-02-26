@@ -38,6 +38,7 @@ class Teste{
 		LexAnalyzer lex;
 		//lex.testeLex();
 		lex.lerArq("exemplo.l");
+		//lex.isAlfab('a');
 	}
 };
 
