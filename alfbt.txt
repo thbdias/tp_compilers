@@ -28,3 +28,4 @@ maior -> >
 menor -> <
 igual -> =
 quebra de linha -> (bytes 0Dh e 0Ah)
+asteriscos -> *   (nao esta na especificacao do tp, mas deve ter)
