@@ -15,13 +15,17 @@
 
 	class LexAnalyzer{
 		public:
+			bool LexAnalyzer::isAlfab(char ch);
+			
+
+		public:
 			SymbTab tabelaSimbolo;
 
 			LexAnalyzer(); //construtor
 			~LexAnalyzer(); //destrutor
 			void testeLex();
 			void lerArq(const char *arq);
-			void proxToken();
+			void proxToken();			
 	};//end class
 
 #endif
