@@ -18,7 +18,7 @@
 			//o tamanho da matriz foi arbitrário
 			//necessário discussão do grupo	
 			//1-cod do identificador ---- 2-lexema
-			string tabSimb [500][2]; //tabela de simbolos
+			string tabSimb[500][2]; //tabela de simbolos
 
 		public:
 			SymbTab(); //construtor
