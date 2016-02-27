@@ -25,6 +25,7 @@ LexAnalyzer::~LexAnalyzer(){
 //teste
 void LexAnalyzer::testeLex(){
 	cout << "\n\nteste lexico ok.\n\n";
+	tabelaSimbolo.exibir();
 	//tabelaSimbolo.exibir(); //funcionando
 	//char ch = 'A';
 	//int asc = (int)ch;

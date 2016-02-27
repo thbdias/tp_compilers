@@ -5,76 +5,137 @@
 	Thiago Henrique Balbino Dias
 */
 
+//----------------------------------
+// BIBLIOTECAS
+//----------------------------------
+
 #include <stdio.h>
 #include <iostream>
 #include <string>
 #include "SymbTab.h"
 using namespace std;
 
+//----------------------------------
+// IMPLEMENTACAO CLASSE SYMBTAB
+//----------------------------------
 
-SymbTab::SymbTab(){	
-}//construtor
-
-
-SymbTab::~SymbTab(){	
-}//destrutor
-
-
-/*
-	metodo que inicializa a tabela de simbolos com
-	os codigos de cada token, e os lexemas.
+/**
+*   Construtor
 */
-void SymbTab::inicialize(){	
-	//deve alterar o metodo de insercao aki para o metodo
-	//que o herbert esta fazendo. A priore, para teste,
-	//a insercao e' manual.	
-	tabSimb[ 0][0] = "1";	tabSimb[ 0][1] = "while";
-	tabSimb[ 1][0] = "1";	tabSimb[ 1][1] = "if";
-	tabSimb[ 2][0] = "1";	tabSimb[ 2][1] = "else";
-	tabSimb[ 3][0] = "1";	tabSimb[ 3][1] = "and";
-	tabSimb[ 4][0] = "1";	tabSimb[ 4][1] = "or";
-	tabSimb[ 5][0] = "1";	tabSimb[ 5][1] = "not";
-	tabSimb[ 6][0] = "1";	tabSimb[ 6][1] = "readln";
-	tabSimb[ 7][0] = "1";	tabSimb[ 7][1] = "write";
-	tabSimb[ 8][0] = "1";	tabSimb[ 8][1] = "writeln";
-	tabSimb[ 9][0] = "1";	tabSimb[ 9][1] = "true";
-	tabSimb[10][0] = "1";	tabSimb[10][1] = "false";
-	tabSimb[11][0] = "2";	tabSimb[11][1] = "=";
-	tabSimb[12][0] = "3";	tabSimb[12][1] = "integer";
-	tabSimb[13][0] = "3";	tabSimb[13][1] = "byte";
-	tabSimb[14][0] = "3";	tabSimb[14][1] = "string";
-	tabSimb[15][0] = "3";	tabSimb[15][1] = "boolean";
-	tabSimb[16][0] = "4";	tabSimb[16][1] = "(";
-	tabSimb[17][0] = "5";	tabSimb[17][1] = ")";
-	tabSimb[18][0] = "6";	tabSimb[18][1] = ">";
-	tabSimb[19][0] = "6";	tabSimb[19][1] = "<";
-	tabSimb[20][0] = "6";	tabSimb[20][1] = "<>";
-	tabSimb[21][0] = "6";	tabSimb[21][1] = ">=";
-	tabSimb[22][0] = "6";	tabSimb[22][1] = "<=";
-	tabSimb[23][0] = "6";	tabSimb[23][1] = "==";
-	tabSimb[24][0] = "7";	tabSimb[24][1] = ",";
-	tabSimb[25][0] = "7";	tabSimb[25][1] = ";";
-	tabSimb[26][0] = "8";	tabSimb[26][1] = "+";
-	tabSimb[27][0] = "8";	tabSimb[27][1] = "-";
-	tabSimb[28][0] = "8";	tabSimb[28][1] = "*";
-	tabSimb[29][0] = "8";	tabSimb[29][1] = "/";			
-	tabSimb[30][0] = "9";	tabSimb[30][1] = "{";
-	tabSimb[31][0] = "10";	tabSimb[31][1] = "}";
-	tabSimb[32][0] = "11";	tabSimb[32][1] = "const";			
-	
-}//end inicialize
+SymbTab::SymbTab(){
+    tabSimb = new SymbolNode[SIZE];
+    for(int i = 0; i < SIZE; i++){
+        tabSimb[i].cod = 0;
+        tabSimb[i].lexema = "";
+		tabSimb[i].next = NULL;
+    }
+}// end construtor()
+
+
+/**
+*   Destrutor
+*/
+SymbTab::~SymbTab(){	
+}//end destrutor()
+
+
+/**
+*	Metodo que inicializa a tabela de simbolos com
+*	os codigos de cada token, e os lexemas das palavras reservadas.
+*/
+void SymbTab::inicialize(){
+	insert('1', "while");
+	insert('1', "if");
+	insert('1', "else");
+	insert('1', "and");
+	insert('1', "or");
+	insert('1', "not");
+	insert('1', "readln");
+	insert('1', "write");
+	insert('1', "writeln");
+	insert('1', "true");
+	insert('1', "false");
+	insert('2', "=");
+	insert('3', "integer");
+	insert('3', "byte");
+	insert('3', "string");
+	insert('3', "boolean");
+	insert('4', "(");
+	insert('5', ")");
+	insert('6', ">");
+	insert('6', "<");
+	insert('6', "<>");
+	insert('6', ">=");
+	insert('6', "<=");
+	insert('6', "==");
+	insert('7', ",");
+	insert('7', ";");
+	insert('8', "+");
+	insert('8', "-");
+	insert('8', "*");
+	insert('8', "/");
+	insert('9', "{");
+	insert('A', "}");
+	insert('B', "const");
+}// end inicialize()
+
+
+/**
+*   Metodo que insere um token na tabela de simbolos
+*/
+int *SymbTab::insert(byte cod, std::string lexema){
+
+	int *result = new int[2];
+	int line = spreading(lexema); 	    // Armazena a posicao na tabela de simbolos
+	int column = 1;						// Armazena a posicao na lista
+
+	struct SymbolNode *symbol = new SymbolNode;		// Simbolo a ser inserido na tabela de simbolos
+	symbol->cod = cod;
+	symbol->lexema = lexema;
+	symbol->next = NULL;
+
+	struct SymbolNode *node = tabSimb[line].next;	// Auxiliar para caminhar na lista
+
+	if(node == NULL){	// tabela vazia
+		tabSimb[line].next = symbol;
+	} else {
+		column++;
+		while(node->next != NULL){
+				node = node->next;
+				column++;
+		}
+		node->next = symbol;
+	}
+	result[0] = line;
+	result[1] = column;
+	node = NULL;
+	return result;
+} // end insert()
+
+
+/**
+*   Metodo que define a posicao de um lexema na tabela de simbolos
+*   Funcao de espalhamento
+*/
+int SymbTab::spreading(std::string lexema){
+    return 0;
+} // end spreading()
 
 
 
-//funcao para testar
+/**
+*   Funcao para testar
+*/
 void SymbTab::exibir (){
 
-	cout << "\n\nquant\tidToken\tlexema\n";
-	for (int i =0; i < 33; i++){
-		cout << "\n" << (i+1);
-		for (int j = 0; j < 2; j++){
-			cout << "\t" << tabSimb[i][j];
-		}//end for
-	}//end for
-	
-}//end exibir
+    cout << "\n\nquant\tidToken\tlexema\n";
+
+    for (int i =0; i < SIZE; i++){
+        int quantidade = 0;
+        struct SymbolNode * node = tabSimb[i].next;
+        while(node != NULL){
+            cout << ++quantidade << "\t" << node->cod << "\t" << node->lexema << "\n";
+            node = node->next;
+        } // end while
+    }// end for
+}// end exibir()
