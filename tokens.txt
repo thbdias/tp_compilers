@@ -2,18 +2,25 @@
 	arquivo criado apenas para vizualização da enumeração dos tokens que constam na linguagem L
 */
 
-*Enumeracao dos tokens da linguagem L
+*Enumeracao das classes dos tokens da linguagem L
 
-1- palavras reservadas 
-2- atribuição (=)
-3- tipos de dados (string boolean byte integer)
-4- abre parenteses ( '(' )
-5- fecha parenteses ( ')' )
-6 - operador relacional ( > < <> >= <= ==)
-7- pontuação (, ;)
-8 - operador aritmético (+ - * /)
-9- abre chaves ({)
-10- fecha chaves (})
-11- constante
-12- variaveis
-13- identificadores
+
+1  - atribuição (=)
+2  - tipos de dados (string boolean byte integer)
+3  - IF
+4  - ELSE
+5  - WHILE
+6  - READ
+7  - WRITE
+8  - abre parenteses ( '(' )
+9  - fecha parenteses ( ')' )
+10 - operador relacional ( > < <> >= <= ==)
+11 - pontuação (, ;)
+12 - operador aritmético (+ - * /)
+13 - abre chaves ({)
+14 - fecha chaves (})
+15 - expressão
+16 - const (palavra 'const')
+17 - identificadores
+18 - id/byte
+19 - operador lógico
