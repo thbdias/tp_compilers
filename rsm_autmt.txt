@@ -1,0 +1,33 @@
+
+Automato Padrão de Formação dos Lexemas
+
+estado de parada -> tipo de lexema ou erro encontrado
+
+q0 -> Erro lexico - caractere invalido
+q1 -> Abre chaves
+q2 -> Abre parenteses
+q3 -> Atribuição
+q4 -> Operador matemático
+q5 -> Comentário
+q6 -> Constante Numero decimal
+q7 -> Identificador
+q8 -> Constante Numero decimal
+q9 -> Identificador
+q10 -> Constante Numero decimal
+q11 -> Constante Numero hexadecimal
+q12 -> Erro lexico - caractere invalido
+q13 -> Constante String
+q14 -> Erro lexico - lexema não identificado
+q15 -> Fecha chaves
+q16 -> Fecha parenteses
+q17 -> Identificador
+q18 -> Erro léxico - lexema não identificado
+q19 -> Operador relacional
+q20 -> Operador relacional
+q21 -> Operador relacional
+q22 -> Operador matemático
+q23 -> Separador
+q24 -> Erro Léxico - lexema não identificado
+q25 -> Lexema ambíguo pode ser aceito como Identificador ou Constante Numero hexadecimal
+q26 -> Delimitador de comando
+q27 -> Operador Matemático
