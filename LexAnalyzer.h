@@ -13,19 +13,18 @@
 	#include <iostream>
 	#include "SymbTab.h"	
 
-	class LexAnalyzer{
-		public:
-			bool LexAnalyzer::isAlfab(char ch);
-			
-
+	class LexAnalyzer{	
 		public:
 			SymbTab tabelaSimbolo;
+			int ESTADO;
 
 			LexAnalyzer(); //construtor
 			~LexAnalyzer(); //destrutor
 			void testeLex();
 			void lerArq(const char *arq);
-			void proxToken();			
+			void proxToken();	
+			int getEstado();
+			void setEstado(int est);
 	};//end class
 
 #endif

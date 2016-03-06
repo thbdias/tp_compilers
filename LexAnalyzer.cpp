@@ -13,13 +13,22 @@
 #include <fstream.h> //tratar arquivos
 using namespace std;
 
+/*
+	construtor
+ */
 LexAnalyzer::LexAnalyzer(){		
 	tabelaSimbolo.inicialize();
+	ESTADO = 0;
 }//construtor
 
 
+
+/*
+	destrutor
+ */
 LexAnalyzer::~LexAnalyzer(){	
 }//destrutor
+
 
 
 //teste
@@ -33,9 +42,10 @@ void LexAnalyzer::testeLex(){
 }
 
 
+
 /*
 	metodo que abre e ler arquivo
-	*param arq: nome do arquivo que sera lido	
+	@param arq: nome do arquivo que sera lido	
  */
 void LexAnalyzer::lerArq(const char * arq){
 	ifstream fin (arq); //abre arquivo para leitura
@@ -43,9 +53,9 @@ void LexAnalyzer::lerArq(const char * arq){
 
 	//while (fin.get(ch)) //le um char do arquivo
 	//	cout << ch;
-	if (isAlfab('*'))
+	//if (isAlfab('*'))
 		cout << "\n\nesta no alfabeto\n\n";
-	else
+	//else
 		cout << "\n\nNAO\n\n";
 
 	fin.close();
@@ -53,97 +63,26 @@ void LexAnalyzer::lerArq(const char * arq){
 
 
 
+//falta editar
 void LexAnalyzer::proxToken (){
 	cout << "\nentrou aki token\n";
 }//end proxToken
 
 
+
 /*
-	funcao que verifica se um char pertence ao alfabeto
-	da linguagem L
-	*param ch: caracter a ser lido
-	*return: true ou false
+	metodo que atualiza o ESTADO
+	@param est: novo estado
  */
-bool LexAnalyzer::isAlfab(char letra){	
-	bool resp = false;
-
-	if ( ((int)letra >= 65) && ((int)letra <= 90) ) //estado q1
-		resp = true;
-	else if ( ((int)letra >= 97) && ((int)letra <= 122) ) //estado q2
-			resp = true;
-	else {
-
-		switch (letra){
-			case '_':	//estado q3
-				resp = true;
-				break;
-			case '.':	//estado q4
-				resp = true;
-				break;
-			case ',':	//estado q5
-				resp = true;
-				break;
-			case ';':	//estado q6
-				resp = true;
-				break;
-			case ':':	//estado q7
-				resp = true;
-				break;
-			case '(':	//estado q8
-				resp = true;
-				break;
-			case ')':	//estado q9
-				resp = true;
-				break;
-			case '[':	//estado q10
-				resp = true;
-				break;
-			case ']':	//estado q11
-				resp = true;
-				break;
-			case '{':	//estado q12
-				resp = true;
-				break;
-			case '}':	//estado q13
-				resp = true;
-				break;
-			case '+':	//estado q14
-				resp = true;
-				break;
-			case '-':	//estado q15
-				resp = true;
-				break;
-			case '\"':	//estdao q16 e q17
-				resp = true;
-				break;
-			case '\'':	//estado q18
-				resp = true;
-				break;
-			case '/':	//estado q19
-				resp = true;
-				break;
-			case '!':	//estado q20
-				resp = true;
-				break;
-			case '?':	//estado q21
-				resp = true;
-				break;
-			case '>':	//estado q22
-				resp = true;
-				break;
-			case '<':	//estado q23
-				resp = true;
-				break;
-			case '=':	//estado q24
-				resp = true;
-				break;
-			case '*':	//estado q25
-				resp = true;
-				break;
-		}//end switch
-
-	}//end if
+void LexAnalyzer::setEstado (int est){	
+}//end setEstado
 
 
-	return resp;
-}//end isAlfab
+
+/*
+	metodo que retorna o estado atual
+	@return: estado atual
+ */
+int LexAnalyzer::getEstado (){
+	return ESTADO;
+}//end getEstado
