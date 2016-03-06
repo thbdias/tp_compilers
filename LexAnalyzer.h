@@ -22,6 +22,7 @@
 			~LexAnalyzer (); //destrutor
 			void testeLex ();
 			void lerArq (const char *arq);
+			bool isAlfbt (char ch);
 			void proxToken ();	
 			int getEstado ();
 			void setEstado (int est);

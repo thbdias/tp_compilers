@@ -33,13 +33,13 @@ LexAnalyzer::~LexAnalyzer(){
 
 //teste
 void LexAnalyzer::testeLex(){
-	cout << "\n\nteste lexico ok.\n\n";	
+	//cout << "\n\nteste lexico ok.";	
 	//tabelaSimbolo.exibir(); //funcionando
-	char ch = '\'';
-	if (isApost(ch))
-		cout << "\n\nE igual!\n"<< (int)ch << "\n";
-	else
-		cout << "\n\nNao e igual\n"<< (int)ch << "\n";
+	//char ch = '\'';
+	//if (isApost(ch))
+	//	cout << "\n\nE igual!\n"<< (int)ch << "\n";
+	//else
+	//	cout << "\n\nNao e igual\n"<< (int)ch << "\n";
 	
 }//end teste
 
@@ -53,15 +53,79 @@ void LexAnalyzer::lerArq(const char * arq){
 	ifstream fin (arq); //abre arquivo para leitura
 	char ch; //char que sera lido do arquivo
 
-	//while (fin.get(ch)) //le um char do arquivo
-	//	cout << ch;
-	//if (isAlfab('*'))
-		cout << "\n\nesta no alfabeto\n\n";
-	//else
-		cout << "\n\nNAO\n\n";
+	if (isAlfbt('('))
+		cout << "\n\nfuncionando\n\n";
+	else
+		cout << "\n\nNAO OK\n\n";
+
+	//while (fin.get(ch)){ //le um char do arquivo
+		//cout << ch; //imprimir na tela
+	//}//end while
 
 	fin.close();
-}//end abrirFonte
+}//end lerArq
+
+
+
+/*
+	metodo que verifica se um char pertence ao alfabeto
+ */
+bool LexAnalyzer::isAlfbt (char ch){
+	bool resp = false;
+
+	if (isIgual(ch))
+		return true;
+	else if (isAParent(ch))
+			return true;
+	else if (isFParent(ch))
+			return true;
+	else if (isMaior(ch))
+			return true;
+	else if (isMenor(ch))
+			return true;
+	else if (isVirgula(ch))
+			return true;
+	else if (isMais(ch))
+			return true;
+	else if (isMenos(ch))
+			return true;
+	else if (isMult(ch))
+			return true;
+	else if (isBarra(ch))
+			return true;
+	else if (isACha(ch))
+			return true;
+	else if (isFCha(ch))
+			return true;
+	else if (isAAspas(ch))
+			return true;
+	else if (isFAspas(ch))
+			return true;
+	else if (isNumero(ch))
+			return true;
+	else if (isSemicolon(ch))
+			return true;
+	else if (isLetraMi(ch))
+			return true;
+	else if (isLetraMa(ch))
+			return true;
+	else if (isSublinhado(ch))
+			return true;
+	else if (isDoisPonto(ch))
+			return true;
+	else if (isAColc(ch))
+			return true;
+	else if (isFColc(ch))
+			return true;
+	else if (isApost(ch))
+			return true;
+	else if (isExclam(ch))
+			return true;
+	else if (isQuestion(ch))
+			return true;
+
+	return resp;
+}//end isAlfbt
 
 
 
