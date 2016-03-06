@@ -5,23 +5,23 @@
 *Enumeracao das classes dos tokens da linguagem L
 
 
-1  - atribuição (=)
-2  - tipos de dados (string boolean byte integer)
+1  - atribuição (=) -> (Atrib)
+2  - tipos de dados (string boolean byte integer) -> (TDados)
 3  - IF
 4  - ELSE
 5  - WHILE
 6  - READ
 7  - WRITE
-8  - abre parenteses ( '(' )
-9  - fecha parenteses ( ')' )
-10 - operador relacional ( > < <> >= <= ==)
-11 - separador (,)
-12 - operador aritmético (+ - * /)
-13 - abre chaves ({)
-14 - fecha chaves (})
-15 - expressão
-16 - const (palavra 'const')
-17 - identificadores
-18 - id/byte
-19 - operador lógico
-20 - delimitador de comando (;)
+8  - abre parenteses ( '(' ) -> (AParent)
+9  - fecha parenteses ( ')' ) -> (FParent)
+10 - operador relacional ( > < <> >= <= ==) -> (ORel)
+11 - separador (,) -> (Sep)
+12 - operador aritmético (+ - * /) -> (OArit)
+13 - abre chaves ({) -> (ACha)
+14 - fecha chaves (}) -> (FCha)
+15 - expressão ("string" ou true-false) -> (Exp)
+16 - const (palavra 'const') -> (Const)
+17 - identificadores -> (ID)
+18 - id/byte -> (ID-Byte)
+19 - operador lógico (and or) -> (OLog)
+20 - delimitador de comando (;) -> (DComand)
