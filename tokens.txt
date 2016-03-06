@@ -15,7 +15,7 @@
 8  - abre parenteses ( '(' )
 9  - fecha parenteses ( ')' )
 10 - operador relacional ( > < <> >= <= ==)
-11 - pontuação (, ;)
+11 - separador (,)
 12 - operador aritmético (+ - * /)
 13 - abre chaves ({)
 14 - fecha chaves (})
@@ -24,3 +24,4 @@
 17 - identificadores
 18 - id/byte
 19 - operador lógico
+20 - delimitador de comando (;)
