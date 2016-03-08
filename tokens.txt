@@ -7,22 +7,21 @@
 
 1  - atribuição (=) -> (Atrib)
 2  - tipos de dados (string boolean byte integer) -> (TDados)
-3  - IF
-4  - ELSE
-5  - WHILE
-6  - READ
-7  - WRITE
+3  - comando if (if)
+4  - comando else (else)
+5  - comando repetição (while) 
+6  - comando leitura (readln )
+7  - comando escrita (write	writeln)
 8  - abre parenteses ( '(' ) -> (AParent)
 9  - fecha parenteses ( ')' ) -> (FParent)
-10 - operador relacional ( > < <> >= <= ==) -> (ORel)
-11 - separador (,) -> (Sep)
-12 - operador aritmético (+ - * /) -> (OArit)
-13 - abre chaves ({) -> (ACha)
-14 - fecha chaves (}) -> (FCha)
-15 - expressão ("string" ou true-false) -> (Exp)
-16 - const (palavra 'const') -> (Const)
-17 - identificadores -> (ID)
-18 - id/byte -> (ID-Byte)
-19 - operador lógico (and or) -> (OLog)
-20 - delimitador de comando (;) -> (DComand)
-21 - numero -> (Num)
+A - operador relacional ( > < <> >= <= ==) -> (ORel)
+B - separador (,) -> (Sep)
+C - operador aritmético (+ - * /) -> (OArit)
+D - abre chaves ({) -> (ACha)
+E - fecha chaves (}) -> (FCha)
+F - expressão (valores dos tipos "string" ou true-false inteiros ou byte) -> (Exp)
+G - const (palavra 'const') -> (Const)
+H - identificadores -> (ID)
+I - id/byte -> (ID-Byte)
+J - operador lógico (and or) -> (OLog)
+K - delimitador de comando (;) -> (DComand)
