@@ -54,6 +54,7 @@ void LexAnalyzer::lerArq(const char * arq){
 	ifstream fin (arq); //abre arquivo para leitura
 	string lexema = "";
 	char ch; //char que sera lido do arquivo
+	int flag; //controle --- ler ultimo lexema
 
 	//if (isAlfbt(' '))
 	//	cout << "\n\nespaco em branco\n\n";
@@ -61,20 +62,29 @@ void LexAnalyzer::lerArq(const char * arq){
 	//	cout << "\n\nNAO OK\n\n";
 
 	while (fin.get(ch)){ //le um char do arquivo
-		
+
 		//branco - quebra linha - tabulacao
 		if ((ch != ' ') && (ch != '\n') && (ch != '\t')){
 			if (isAlfbt(ch))
 				lexema = lexema + ch;
+				flag = 1;
 		}
 		else{
 				if (lexema != ""){
-					cout << "\n 777 " << lexema;
+					//cout << "\n 777 " << lexema;
 					tabelaSimbolo.insert('1', lexema);
+					flag = 0;
 				}
 				lexema = "";
 			}	
+		
 	}//end while
+
+
+	if (flag == 1){
+		//cout << "\n 777 " << lexema;
+		tabelaSimbolo.insert('1', lexema);
+	}//end if
 
 	fin.close();
 
@@ -169,7 +179,7 @@ bool LexAnalyzer::isAlfbt (char ch){
 			case '/':
 				resp = true;
 				break;	
-			case ' ':
+			case '.':
 				resp = true;
 				break;
 		}//end switch
@@ -240,5 +250,9 @@ bool LexAnalyzer::isLetraMa (char ch){
  */
 char LexAnalyzer::obterClassToken (string lexema){
 	char resp = '0';
+
+	//switch
+
+
 	return resp;
 }//end obterClassToken
