@@ -25,3 +25,4 @@
 18 - id/byte -> (ID-Byte)
 19 - operador lógico (and or) -> (OLog)
 20 - delimitador de comando (;) -> (DComand)
+21 - numero -> (Num)
