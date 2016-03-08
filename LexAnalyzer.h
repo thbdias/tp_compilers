@@ -16,8 +16,7 @@
 	class LexAnalyzer{	
 		public:
 			SymbTab tabelaSimbolo;
-			int ESTADO;
-			int classToken;
+			int ESTADO;			
 
 			LexAnalyzer (); //construtor
 			~LexAnalyzer (); //destrutor
@@ -27,7 +26,7 @@
 			void proxToken ();	
 			int getEstado ();
 			void setEstado (int est);
-			bool isNumero (char ch);
+			bool isDigito (char ch);
 			bool isLetraMi (char ch);
 			bool isLetraMa (char ch);
 			char obterClassToken (string lexema);

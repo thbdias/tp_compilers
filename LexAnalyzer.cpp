@@ -18,8 +18,7 @@ using namespace std;
  */
 LexAnalyzer::LexAnalyzer(){		
 	tabelaSimbolo.inicialize();
-	ESTADO = 0;
-	classToken = 0;
+	ESTADO = 0;	
 }//construtor
 
 
@@ -54,12 +53,9 @@ void LexAnalyzer::lerArq(const char * arq){
 	ifstream fin (arq); //abre arquivo para leitura
 	string lexema = "";
 	char ch; //char que sera lido do arquivo
+	char classToken; //classe do token
 	int flag; //controle --- ler ultimo lexema
 
-	//if (isAlfbt(' '))
-	//	cout << "\n\nespaco em branco\n\n";
-	//else
-	//	cout << "\n\nNAO OK\n\n";
 
 	while (fin.get(ch)){ //le um char do arquivo
 
@@ -70,20 +66,20 @@ void LexAnalyzer::lerArq(const char * arq){
 				flag = 1;
 		}
 		else{
-				if (lexema != ""){
-					//cout << "\n 777 " << lexema;
-					tabelaSimbolo.insert('1', lexema);
+				if (lexema != ""){					
+					classToken = obterClassToken(lexema);
+					tabelaSimbolo.insert(classToken, lexema);
 					flag = 0;
-				}
+				}//end if
 				lexema = "";
-			}	
+			}//end if	
 		
 	}//end while
 
 
-	if (flag == 1){
-		//cout << "\n 777 " << lexema;
-		tabelaSimbolo.insert('1', lexema);
+	if (flag == 1){		
+		classToken = obterClassToken(lexema);
+		tabelaSimbolo.insert(classToken, lexema);
 	}//end if
 
 	fin.close();
@@ -99,7 +95,7 @@ void LexAnalyzer::lerArq(const char * arq){
 bool LexAnalyzer::isAlfbt (char ch){
 	bool resp = false;
 
-	if (isNumero(ch)) //precisar alterar. q6, q8, q10, sao numeros
+	if (isDigito(ch)) //precisar alterar. q6, q8, q10, sao numeros
 		resp = true;
 	else if (isLetraMi(ch))
 			resp = true;
@@ -219,9 +215,9 @@ int LexAnalyzer::getEstado (){
 	metodo que verifica se char e' numero (0-9)
 	@return: true or false
  */
-bool LexAnalyzer::isNumero (char ch){
+bool LexAnalyzer::isDigito (char ch){
 	return (((int)ch >= 48) && ((int)ch <= 57));
-}//end isNumero
+}//end isDigito
 
 
 
@@ -251,8 +247,40 @@ bool LexAnalyzer::isLetraMa (char ch){
 char LexAnalyzer::obterClassToken (string lexema){
 	char resp = '0';
 
-	//switch
-
+	if (lexema == "if")
+		return resp = '3';
+	else if (lexema == "else")
+			return resp = '4';	
+	else if (lexema == "while")
+			return resp = '5';
+	else if (lexema == "readln")
+			return resp = '6';	
+	else if ((lexema == "write") || (lexema == "writeln"))
+			return resp = '7';	
+	else if (lexema == "(")
+			return resp = '8';	
+	else if (lexema == ")")
+			return resp = '9';
+	else if ((lexema == ">") || (lexema == "<") || (lexema == ">=") || (lexema == "<=") || (lexema == "=="))
+			return resp = 'A';
+	else if (lexema == ",")
+			return resp = 'B';
+	else if ((lexema == "+") || (lexema == "-") || (lexema == "*")) //tratar barra
+			return resp = 'C';
+	else if (lexema == "{")
+			return resp = 'D';
+	else if (lexema == "}")
+			return resp = 'E'; 
+	//else if (lexema == ) //expressão
+	else if (lexema == "const")
+			return resp = 'G';
+	//else if (lexema == ) //id
+	//else if (lexema == ) //id-byte
+	//else if (lexema == ) //atribuição =
+	//else if (lexema == ) //tipos de dados
+	//else if (lexema == ) //operador logico (and or)
+	else if (lexema == ";")
+			return resp = 'K';
 
 	return resp;
 }//end obterClassToken
