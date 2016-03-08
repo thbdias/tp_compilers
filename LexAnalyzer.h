@@ -17,6 +17,7 @@
 		public:
 			SymbTab tabelaSimbolo;
 			int ESTADO;
+			int classToken;
 
 			LexAnalyzer (); //construtor
 			~LexAnalyzer (); //destrutor
@@ -29,6 +30,7 @@
 			bool isNumero (char ch);
 			bool isLetraMi (char ch);
 			bool isLetraMa (char ch);
+			char obterClassToken (string lexema);
 	};//end class
 
 #endif

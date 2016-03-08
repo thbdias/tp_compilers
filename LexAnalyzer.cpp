@@ -19,6 +19,7 @@ using namespace std;
 LexAnalyzer::LexAnalyzer(){		
 	tabelaSimbolo.inicialize();
 	ESTADO = 0;
+	classToken = 0;
 }//construtor
 
 
@@ -44,25 +45,40 @@ void LexAnalyzer::testeLex(){
 }//end teste
 
 
-//FALTA EDITAR
+//ESTE METODO ESTA TESTANDO AS OUTRAS FUNCIONALIDADES DO SISTEMA--------------------
 /*
 	metodo que abre e ler arquivo
 	@param arq: nome do arquivo que sera lido	
  */
 void LexAnalyzer::lerArq(const char * arq){
 	ifstream fin (arq); //abre arquivo para leitura
+	string lexema = "";
 	char ch; //char que sera lido do arquivo
 
-	if (isAlfbt('"'))
-		cout << "\n\nfuncionando\n\n";
+	//if (isAlfbt(' '))
+	//	cout << "\n\nespaco em branco\n\n";
 	//else
 	//	cout << "\n\nNAO OK\n\n";
 
-	//while (fin.get(ch)){ //le um char do arquivo
-		//cout << ch; //imprimir na tela
-	//}//end while
+	while (fin.get(ch)){ //le um char do arquivo
+		
+		//branco - quebra linha - tabulacao
+		if ((ch != ' ') && (ch != '\n') && (ch != '\t')){
+			if (isAlfbt(ch))
+				lexema = lexema + ch;
+		}
+		else{
+				if (lexema != ""){
+					cout << "\n 777 " << lexema;
+					tabelaSimbolo.insert('1', lexema);
+				}
+				lexema = "";
+			}	
+	}//end while
 
 	fin.close();
+
+	tabelaSimbolo.exibir();
 }//end lerArq
 
 
@@ -153,6 +169,9 @@ bool LexAnalyzer::isAlfbt (char ch){
 			case '/':
 				resp = true;
 				break;	
+			case ' ':
+				resp = true;
+				break;
 		}//end switch
 
 	return resp;
@@ -213,3 +232,13 @@ bool LexAnalyzer::isLetraMi (char ch){
 bool LexAnalyzer::isLetraMa (char ch){
 	return (((int)ch >= 65) && ((int)ch <= 90));
 }//end isLetraMa
+
+
+
+/*
+	funcao que verifica a qual classe de token o lexema pertence
+ */
+char LexAnalyzer::obterClassToken (string lexema){
+	char resp = '0';
+	return resp;
+}//end obterClassToken
