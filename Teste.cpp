@@ -24,7 +24,7 @@ class Teste{
 	void teste2 (){
 		LexAnalyzer lex;
 		lex.testeLex();
-		lex.lerArq("exemplo.l");
+		lex.lerArq("teste.dat");
 	}
 	
 	//teste analisador lexico
