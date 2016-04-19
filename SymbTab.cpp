@@ -29,13 +29,14 @@ SymbTab::SymbTab(){
         tabSimb[i].lexema = "";
 		tabSimb[i].next = NULL;
     }
+    inicialize();
 }// end construtor()
 
 
 /**
 *   Destrutor
 */
-SymbTab::~SymbTab(){	
+SymbTab::~SymbTab(){
 }//end destrutor()
 
 
@@ -53,8 +54,8 @@ void SymbTab::inicialize(){
 	insert('6', "readln");
 	insert('7', "write");
 	insert('7', "writeln");
-	insert('F', "true");
-	insert('F', "false");
+	insert('L', "TRUE");
+	insert('L', "FALSE");
 	insert('1', "=");
 	insert('2', "integer");
 	insert('2', "byte");
@@ -69,7 +70,7 @@ void SymbTab::inicialize(){
 	insert('A', "<=");
 	insert('A', "==");
 	insert('B', ",");
-	insert('B', ";");
+	insert('K', ";");
 	insert('C', "+");
 	insert('C', "-");
 	insert('C', "*");
@@ -77,39 +78,51 @@ void SymbTab::inicialize(){
 	insert('D', "{");
 	insert('E', "}");
 	insert('G', "const");
+	insert ('P', "then");
 }// end inicialize()
+
+
+/**
+ *  Metodo que recebe um token encontrado pelo analisador Lexico
+ *  e o insere na tabela de simbolos e registro lexico
+ *//*
+ void SymbTab::input(byte cod, std::string lexema){
+     SymbolNode * symbol = insert(cod, lexema);     // Insere o token na tabela de simbolos
+     addToken(symbol);                              // Insere o token no registro lexico
+ }*/
 
 
 /**
 *   Metodo que insere um token na tabela de simbolos
 */
-int *SymbTab::insert(byte cod, std::string lexema){
+SymbolNode * SymbTab::insert(byte cod, std::string lexema){
 
-	int *result = new int[2];
-	int line = spreading(lexema); 	    // Armazena a posicao na tabela de simbolos
-	int column = 1;						// Armazena a posicao na lista
+	int line = spreading(lexema); 	                // Armazena a posicao na tabela de simbolos
+	SymbolNode *symbol;                     		// Simbolo a ser inserido na tabela de simbolos
 
-	struct SymbolNode *symbol = new SymbolNode;		// Simbolo a ser inserido na tabela de simbolos
-	symbol->cod = cod;
-	symbol->lexema = lexema;
-	symbol->next = NULL;
 
-	struct SymbolNode *node = tabSimb[line].next;	// Auxiliar para caminhar na lista
+	symbol = search(lexema);                        // Verifica se o lexema ja existe na tabela de simbolo
 
-	if(node == NULL){	// tabela vazia
-		tabSimb[line].next = symbol;
-	} else {
-		column++;
-		while(node->next != NULL){
-				node = node->next;
-				column++;
-		}
-		node->next = symbol;
-	}
-	result[0] = line;
-	result[1] = column;
-	node = NULL;
-	return result;
+	if(symbol == NULL){ // token nao existe na tabela de simbolo
+
+        symbol = new SymbolNode;
+        symbol->cod = cod;
+        symbol->lexema = lexema;
+        symbol->next = NULL;
+
+        SymbolNode * node = tabSimb[line].next;	// Auxiliar para caminhar na lista
+        if(node == NULL){	// tabela vazia
+            tabSimb[line].next = symbol;        // insere o token na primeira posição válida
+        } else {
+            while(node->next != NULL){
+				node = node->next;              //caminha ate encontrar o ultimo
+            }
+            node->next = symbol;                // insere o token no fim da lista
+            symbol = node->next;                // armazena endereço de inserção para retorno
+        }
+        node = NULL;
+    }
+	return symbol;
 } // end insert()
 
 
@@ -118,10 +131,30 @@ int *SymbTab::insert(byte cod, std::string lexema){
 *   Funcao de espalhamento
 */
 int SymbTab::spreading(std::string lexema){
-    return 0;
+    int term = 0;
+
+    for(int i = 0; i < (int)lexema.length(); i++){
+        term += lexema.at(i);
+    }
+    return term % SIZE;
 } // end spreading()
 
+/**
+ *  Metodo que verifica a existência de um lexema na tabela de simbolos e o retorna
+ */
+ SymbolNode * SymbTab::search(std::string lexema){
 
+     SymbolNode * resposta = NULL;
+     SymbolNode * node = tabSimb[spreading(lexema)].next;
+
+     while(node != NULL){
+            if(lexema.compare(node->lexema) == 0){
+                return node;
+            }
+            node = node->next;
+		}
+     return resposta;
+ }
 
 /**
 *   Funcao para testar
@@ -129,9 +162,9 @@ int SymbTab::spreading(std::string lexema){
 void SymbTab::exibir (){
 
     cout << "\n\nquant\tidToken\tlexema\n";
-
+    int quantidade = 0;
     for (int i =0; i < SIZE; i++){
-        int quantidade = 0;
+
         struct SymbolNode * node = tabSimb[i].next;
         while(node != NULL){
             cout << ++quantidade << "\t" << node->cod << "\t" << node->lexema << "\n";
@@ -139,3 +172,6 @@ void SymbTab::exibir (){
         } // end while
     }// end for
 }// end exibir()
+
+
+

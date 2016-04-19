@@ -26,7 +26,7 @@
                         // necessário discussão do grupo
 
     //-----------------------------
-	// DEFINICAO DE TIPOS             
+	// DEFINICAO DE TIPOS
 	//-----------------------------
 
     typedef char byte;
@@ -43,15 +43,17 @@
 
 	class SymbTab{
 		private:
-			SymbolNode *tabSimb;    //tabela de simbolos
+			SymbolNode * tabSimb;       //tabela de simbolos
 
 		public:
-			SymbTab(); //----------------------------------construtor
-			~SymbTab(); //---------------------------------destrutor
-			void inicialize(); //--------------------------inserir palavras reservadas
-			void exibir(); //------------------------------teste
-			int *insert(byte cod, std::string lexema); //-inserir simbolo
-			int spreading(std::string lexema);          //-funcao espalhamento
+			SymbTab(); //----------------------------------------construtor
+			~SymbTab(); //---------------------------------------destrutor
+			void inicialize(); //--------------------------------inserir palavras reservadas
+			void exibir(); //------------------------------------teste
+			//void input(byte cod, std::string lexema);//----------metodo de entrada para o analisador lexico
+			SymbolNode *insert(byte cod, std::string lexema);//--inserir simbolo
+			int spreading(std::string lexema);//-----------------funcao espalhamento
+			SymbolNode * search(std::string lexema);//-----------função de busca
 	};
 
 #endif
