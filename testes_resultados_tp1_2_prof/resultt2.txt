@@ -1,0 +1,24 @@
+
+Registro Lexico
+quant	idToken	lexema
+
+1	2	integer
+2	H	n
+3	1	=
+4	F	0
+5	K	;
+6	C	/
+7	H	comentario
+8	H	errado
+9	B	,
+10	H	deve
+11	H	entender
+12	H	como
+13	C	/
+14	H	e
+15	N	comentario$
+16	2	boolean
+17	H	f
+18	1	=
+19	H	true
+20	K	;

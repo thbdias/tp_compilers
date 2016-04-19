@@ -1,0 +1,24 @@
+
+Registro Lexico
+quant	idToken	lexema
+
+1	2	integer
+2	H	a
+3	1	=
+4	F	1
+5	K	;
+6	2	string
+7	H	x
+8	1	=
+9	N	$
+10	K	;
+11	2	boolean
+12	H	s1
+13	1	=
+14	H	false
+15	K	;
+16	2	byte
+17	H	f
+18	1	=
+19	F	4
+20	K	;

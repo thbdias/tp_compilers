@@ -1,0 +1,276 @@
+void SintAnalyzer::S(){
+	if(currentToken->cod == 'G' || currentToken->cod == '2'){
+		DECL();
+	}
+	BLOCO();
+}
+
+void SintAnalyzer::DECL(){
+		
+	if(currentToken->cod == 'G'){
+		match('G');
+		match('H');
+		match('1');
+		VALOR();
+		match('K');
+	} else {
+		TIPO();
+		match('H');
+		if(currentToken->cod == '1'){
+				match('1');
+				VALOR();
+			}
+		while(currentToken->cod == 'B'){
+			match('B')
+			match('H');
+			if(currentToken->cod == '1'){
+				match('1');
+				VALOR();
+			}
+		}
+		match('K');
+	}
+}
+
+void SintAnalyzer::TIPO(){
+	match('2');
+}
+
+void SintAnalyzer::VALOR(){
+	if(currentToken->lexema == "-"){
+		match('-');
+	}
+	if(currentToken->cod == 'F'){
+		match('F');
+	} else if(currentToken->cod == 'L'){
+		match('L');
+	} else if(currentToken->cod == 'M'){
+		match('M');
+	} else match('N');	
+}
+
+
+
+
+
+
+
+
+void SintAnalyzer::BLOCO(){
+	match('D');
+	COMANDO();
+	match('E');
+}
+
+
+void SintAnalyzer::COMANDO(){	
+	
+	if (currentToken->cod == 'H')
+		COMANDO_ATRIB();
+	else if (currentToken->cod == '5')
+		COMANDO_REPET();
+	else if (currentToken->cod == '3')
+		COMANDO_TESTE();
+	else if (currentToken->cod == 'K')
+		COMANDO_NULO();
+	else if (currentToken->cod == '6')
+		COMANDO_LEITURA();
+	else if (currentToken->cod == '7')
+		COMANDO_ESCRITA();		
+}
+
+
+void SintAnalyzer::COMANDO_ATRIB(){
+	match('H');
+	match('1');
+	EXPRESSAO();
+	match('K');
+}
+
+
+void SintAnalyzer::COMANDO_REPET(){
+	match('5');
+	EXPRESSAO();
+
+	if (currentToken->cod == 'D')
+		BLOCO();
+	else
+		COMANDO();
+}
+
+
+
+void SintAnalyzer::COMANDO_TESTE(){
+	match('3');
+	EXPRESSAO();
+	match('P');
+
+	if (currentToken->cod == 'D')
+		BLOCO();
+	else
+		COMANDO();
+
+
+	if (currentToken->cod == '4'){
+		match('4');
+
+		if (currentToken->cod == 'D') BLOCO();
+		else COMANDO();
+	}
+}
+
+
+
+
+void SintAnalyzer::COMANDO_NULO(){
+	match('K');
+}
+
+
+
+void SintAnalyzer::COMANDO_LEITURA(){
+	match('6');
+	match('B');
+	match('H');
+	match('K');
+}
+
+
+void SintAnalyzer::COMANDO_ESCRITA(){
+	match('7');
+	match('B');
+	EXPRESSAO();
+
+	if (currentToken->cod == 'B'){
+		match('B');
+		EXPRESSAO();
+	}
+
+	match('K');
+}
+
+
+void SintAnalyzer::EXPRESSAO(){
+	EXP_4();
+
+	if (currentToken->cod == 'A'){
+		OPERADOR_P5();
+		EXP_4();
+	}
+}
+
+
+void SintAnalyzer::OPERADOR_P5(){
+	match('A');
+}
+
+
+
+void SintAnalyzer::EXP_4(){
+	if (currentToken->cod == '-')
+		match('-');
+
+	EXP_3();
+
+	if ((currentToken->cod == '-') | (currentToken->cod == '+') | (currentToken->cod == 'or')){
+		OPERADOR_P4();
+		EXP_3();
+	}
+}
+
+
+void SintAnalyzer::OPERADOR_P4(){
+	if (currentToken->cod == '-')
+		match('-');
+	else if (currentToken->cod == '+')
+		match('+');
+	else if (currentToken->cod == 'or')
+		match('or');
+}
+
+
+void SintAnalyzer::EXP_3(){
+	EXP_2();
+
+	if ((currentToken->cod == '*') | (currentToken->cod == '/') | (currentToken->cod == 'and')){
+		OPERADOR_P3();
+		EXP_2();
+	}
+}
+
+
+
+void SintAnalyzer::OPERADOR_P3(){
+	if ((currentToken->cod == '*')
+		match('*');
+	else if (currentToken->cod == '/') 
+		match('/');
+	else if (currentToken->cod == 'and')
+		match('and');	
+}
+
+
+
+void SintAnalyzer::EXP_2(){
+	is (currentToken->cod == 'not')
+		match('not');
+
+	EXP_1();
+}
+
+
+
+void SintAnalyzer::EXP_1(){
+	if (currentToken->cod == '8'){
+		match('8');
+		EXPRESSAO();
+		match('9');
+	}
+	else 
+		CONST();
+}
+
+
+
+void SintAnalyzer::CONST(){
+	if (currentToken->cod == 'F')
+		match('F');
+	else if (currentToken->cod == 'M')
+		match('M');
+	else if (currentToken->cod == 'J') //tenho dúvidas se é isso msm (val_logico)
+		match('J');
+	else if (currentToken->cod == ) //tenho duvidas se é isso msm (val_string)
+		match('');
+	else if (currentToken->cod == 'H')
+		match('H');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+byte c = ABh;

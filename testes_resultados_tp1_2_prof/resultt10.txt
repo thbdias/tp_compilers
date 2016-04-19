@@ -1,0 +1,32 @@
+
+Registro Lexico
+quant	idToken	lexema
+
+1	2	integer
+2	H	a
+3	1	=
+4	F	4
+5	B	,
+6	H	b
+7	1	=
+8	F	1
+9	K	;
+10	2	byte
+11	H	f
+12	1	=
+13	I	AAh
+14	K	;
+15	D	{
+16	5	while
+17	H	b
+18	A	<=
+19	H	a
+20	D	{
+21	H	b
+22	1	=
+23	H	b
+24	C	+
+25	F	1
+26	K	;
+27	E	}
+28	E	}

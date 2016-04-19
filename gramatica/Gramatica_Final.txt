@@ -1,0 +1,48 @@
+S 					-> 	 [ { DECL } ] BLOCO 
+
+DECL 				->	TIPO id [ '=' VALOR ] [ { ',' id [ '=' VALOR ] } ] ';' |
+						'const' id '=' VALOR ';'
+
+TIPO				->	 'integer'  |  'byte'  |  'boolean'  |  'string'
+
+VALOR				->	[ '-' ] num_decimal  |  num_hexa  |  val_logico  |  val_string
+
+-------------------------------------------------------------------------------------------------------------
+
+BLOCO 				-> '{' [ { COMANDO } ] '}'
+
+COMANDO	->	COMANDO_ATRIB  |  COMANDO_REPET  | COMANDO_TESTE  |  
+			COMANDO_NULO  |  COMANDO_LEITURA  |  COMANDO_ESCRITA
+
+COMANDO_ATRIB		-> 	id '=' EXPRESSAO ';'
+
+COMANDO_REPET		->	'while' EXPRESSAO ( COMANDO  |  BLOCO )
+
+COMANDO_TESTE		-> 'if' EXPRESSAO 'then' ( COMANDO | BLOCO ) [ 'else' ( COMANDO | BLOCO ) ]
+
+COMANDO_NULO		-> ';'
+
+COMANDO_LEITURA		-> 'readln' ',' id ';'
+
+COMANDO_ESCRITA		-> ( 'write'  |  'writeln') ',' EXPRESSAO [ { ',' EXPRESSAO } ] ';'
+
+EXPRESSAO			->	EXP_4 [ { OPERADOR_P5 EXP_4 } ]
+
+OPERADOR_P5			->	'<' | '<=' | '>' | '>=' | '==' | '<>'
+
+EXP_4				->	['-'] EXP_3 [ { OPERADOR_P4 EXP_3} ]
+
+OPERADOR_P4			->	'-' | '+' | 'or'
+
+EXP_3				->	EXP_2 [ { OPERADOR_P3 EXP_2 } ]
+
+OPERADOR_P3			->	'*' | '/' | 'and'
+
+EXP_2				->	['not'] EXP_1
+
+EXP_1				->	'(' EXPRESSAO ')' | CONST
+
+CONST				->	num_decimal  |  num_hexa  |  val_logico  |  val_string | id
+
+--------------------------------------------------------------------------------------------------------------
+		
