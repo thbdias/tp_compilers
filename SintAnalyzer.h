@@ -23,13 +23,35 @@
 			LexRecord *currentToken;
 			RegLexico registroLexico;
 			LexAnalyzer lex;
+			bool notNull;
 
-		public:			
+		public:
 			SintAnalyzer (); //construtor
 			~SintAnalyzer (); //destrutor
 			void teste();
 			void principal(const char *arq);
 			void S();
+			void DECL();
+			void TIPO();
+			void VALOR();
+			void BLOCO();
+			void COMANDO();
+			void COMANDO_ATRIB();
+			void COMANDO_REPET();
+			void COMANDO_TESTE();
+			void COMANDO_NULO();
+			void COMANDO_LEITURA();
+			void COMANDO_ESCRITA();
+			void EXPRESSAO();
+			void OPERADOR_P5();
+			void EXP_4();
+			void OPERADOR_P4();
+			void EXP_3();
+			void OPERADOR_P3();
+			void EXP_2();
+			void EXP_1();
+			void CONST();
+			void match(char);
 	};
 
 #endif

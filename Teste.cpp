@@ -48,7 +48,7 @@ class Teste{
 	//teste do analisador sintatico
 	void teste3(char *arq){
 		SintAnalyzer sint;
-		LexAnalyzer lex;		
+		//LexAnalyzer lex;		
 		//lex.lerArq(arq);
 		//sint.teste();
 		sint.principal(arq);

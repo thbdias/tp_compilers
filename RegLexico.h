@@ -52,8 +52,10 @@
 			void exibir(); //------------------------------------teste
 			void addToken(SymbolNode* symbol, int lineNumber);//-adiciona um token no registro lexico
 			LexRecord * getNextToken();//------------------------retorna o proximo token do registro lexico
-			std::string getType(byte cod);//---------------------retorna o tipo de dado para tolen constante			
+			std::string getType(byte cod);//---------------------retorna o tipo de dado para tolen constante
 			LexRecord *getFirstToken();
+			LexRecord *getLastToken();
+			void resetNext();
 	};
 
 

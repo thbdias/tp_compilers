@@ -115,6 +115,9 @@ void RegLexico::exibir (){// Alterado para verificar se o registro lexico esta f
 }// end exibir()
 
 
+LexRecord *RegLexico::getLastToken(){
+    return lastToken;
+}
 
 /**
  * metodo que retorna o primeiro token do registro lexico
@@ -122,3 +125,7 @@ void RegLexico::exibir (){// Alterado para verificar se o registro lexico esta f
 LexRecord *RegLexico::getFirstToken(){
   return firstToken;
 }//end getFirstToken
+
+void RegLexico::resetNext(){
+    nextToken = firstToken;
+}

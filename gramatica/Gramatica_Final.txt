@@ -1,6 +1,6 @@
-S 					-> 	 [ { DECL } ] BLOCO 
+S 					-> 	 [ { DECL } ] BLOCO 	
 
-DECL 				->	TIPO id [ '=' VALOR ] [ { ',' id [ '=' VALOR ] } ] ';' |
+DECL 				->	TIPO id [ '=' VALOR ] [ { ',' id [ '=' VALOR ] } ] ';' |	
 						'const' id '=' VALOR ';'
 
 TIPO				->	 'integer'  |  'byte'  |  'boolean'  |  'string'
