@@ -1,18 +1,18 @@
 [main] gll 1000 (0) exception: trapped!
-[main] gll 1000 (0) exception: code 0xC0000005 at 0x40300A
-[main] gll 1000 (0) exception: ax 0x0 bx 0x247FEA8 cx 0x0 dx 0x247FEAC
-[main] gll 1000 (0) exception: si 0x247FF25 di 0xA0311C8 bp 0x247FE50 sp 0x247FE48
+[main] gll 1000 (0) exception: code 0xC0000005 at 0x403F20
+[main] gll 1000 (0) exception: ax 0xA0348B0 bx 0x247FE8C cx 0x1 dx 0x0
+[main] gll 1000 (0) exception: si 0xA0311C8 di 0x247FE14 bp 0x247FE30 sp 0x247FE00
 [main] gll 1000 (0) exception: exception is: STATUS_ACCESS_VIOLATION
 [main] gll 1000 (0) stack: Stack trace:
-[main] gll 1000 (0) stack: frame 0: sp = 0x247F9D0, pc = 0x6100A2C3
-[main] gll 1000 (0) stack: frame 1: sp = 0x247FA0C, pc = 0x779130F1
-[main] gll 1000 (0) stack: frame 2: sp = 0x247FA30, pc = 0x779130C3
-[main] gll 1000 (0) stack: frame 3: sp = 0x247FAF8, pc = 0x77912F2B
-[main] gll 1000 (0) stack: frame 4: sp = 0x247FE50, pc = 0x420B15
-[main] gll 1000 (0) stack: frame 5: sp = 0x247FEC8, pc = 0x403DC5
-[main] gll 1000 (0) stack: frame 6: sp = 0x247FF00, pc = 0x61004402
+[main] gll 1000 (1) stack: frame 0: sp = 0x247F988, pc = 0x6100A2C3
+[main] gll 1000 (0) stack: frame 1: sp = 0x247F9C4, pc = 0x779130F1
+[main] gll 1000 (0) stack: frame 2: sp = 0x247F9E8, pc = 0x779130C3
+[main] gll 1000 (0) stack: frame 3: sp = 0x247FAB0, pc = 0x77912F2B
+[main] gll 1000 (0) stack: frame 4: sp = 0x247FE30, pc = 0x420D20
+[main] gll 1000 (0) stack: frame 5: sp = 0x247FECC, pc = 0x404005
+[main] gll 1000 (0) stack: frame 6: sp = 0x247FF04, pc = 0x61004402
 [main] gll 1000 (0) stack: frame 7: sp = 0x247FF4C, pc = 0x61004420
-[main] gll 1000 (0) stack: frame 8: sp = 0x247FF58, pc = 0x41CC9A
+[main] gll 1000 (0) stack: frame 8: sp = 0x247FF58, pc = 0x41CEDA
 [main] gll 1000 (0) stack: frame 9: sp = 0x247FF68, pc = 0x40103A
 [main] gll 1000 (0) stack: frame 10: sp = 0x247FF84, pc = 0x76CB8543
 [main] gll 1000 (0) stack: frame 11: sp = 0x247FF90, pc = 0x7792AC69

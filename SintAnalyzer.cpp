@@ -43,7 +43,8 @@ void SintAnalyzer::teste(){
  * metodo que inicia a analise da gramatica
  */
 void SintAnalyzer::principal(const char *arq){
-	registroLexico = lex.lerArq(arq);
+	lex.lerArq(arq);
+	registroLexico = lex.getRegistroLexico();
 
 	//registroLexico.exibir();
 	currentToken = registroLexico.getFirstToken();

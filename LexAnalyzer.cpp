@@ -47,7 +47,7 @@ void LexAnalyzer::testeLex(){
 	metodo que abre e le arquivo
 	@param arq: nome do arquivo que sera lido
  */
-RegLexico LexAnalyzer::lerArq(const char * arq){
+void LexAnalyzer::lerArq(const char * arq){
 
 	ifstream fin (arq);                     //abre arquivo para leitura
 
@@ -70,7 +70,8 @@ RegLexico LexAnalyzer::lerArq(const char * arq){
                 // tratar casos de erro lexico e comentario
             case 0:
                 cout << lineNumber << ":caractere invalido\n";
-            exit(0);
+                //return;
+                exit(0);
 
             case 5:     // estado referente aos comentarios
                 resetMachine();
@@ -78,20 +79,25 @@ RegLexico LexAnalyzer::lerArq(const char * arq){
 
             case 12:
                 cout << lineNumber << ":caractere invalido\n";
+                //return;
                 exit(0);
 
             case 14:
                 if(ch == '\n') lineNumber--;
                 cout << lineNumber << ":lexema nao identificado [ " << lexema << " ]\n";
+                //return;
                 exit(0);
 
             case 18:
                 if(ch == '\n') lineNumber--;
                 cout << lineNumber << ":lexema nao identificado [ " << lexema << " ]\n";
+                //return;
                 exit(0);
+                
             case 24:
                 if(ch == '\n') lineNumber--;
                 cout << lineNumber << ":lexema nao identificado [ " << lexema << " ]\n";
+                //return;
                 exit(0);
 
             default:
@@ -115,8 +121,17 @@ RegLexico LexAnalyzer::lerArq(const char * arq){
 	//tabelaSimbolo.exibir();
 	//registroLexico.exibir();
     
-    return registroLexico;
+    //return registroLexico;
 }//end lerArq
+
+
+/**
+ * metodo que retorna o registro léxico
+ */
+RegLexico LexAnalyzer::getRegistroLexico(){
+    return registroLexico;
+}//end getRegistroLexico
+
 
 /**
  * Metodo que retorna a maquina de estados para o estado inicial
