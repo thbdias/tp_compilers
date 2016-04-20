@@ -26,7 +26,7 @@
 			LexAnalyzer (); //construtor
 			~LexAnalyzer (); //destrutor
 			void testeLex ();
-			void lerArq (const char *arq);
+			RegLexico lerArq (const char *arq);
 			void transition(char c);
 			void resetMachine();
 			bool isDigito (char ch);

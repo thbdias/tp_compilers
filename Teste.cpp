@@ -49,9 +49,9 @@ class Teste{
 	void teste3(char *arq){
 		SintAnalyzer sint;
 		LexAnalyzer lex;		
-		lex.lerArq(arq);
+		//lex.lerArq(arq);
 		//sint.teste();
-		sint.principal();
+		sint.principal(arq);
 	}
 };
 

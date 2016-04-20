@@ -16,6 +16,7 @@
 #include "SintAnalyzer.h"
 #include "SymbTab.h"
 #include "RegLexico.h"
+#include "LexAnalyzer.h"
 using namespace std;
 
 /**
@@ -41,21 +42,22 @@ void SintAnalyzer::teste(){
 /**
  * metodo que inicia a analise da gramatica
  */
-void SintAnalyzer::principal(){
-	//pegar primeiro registro
-	//currentToken = registroLexico.getFirstToken();
-	//cout << "\n\nexemplo: " << currentToken->cod << "\n\n";
-	//
+void SintAnalyzer::principal(const char *arq){
+	registroLexico = lex.lerArq(arq);
+
+	//registroLexico.exibir();
+	currentToken = registroLexico.getFirstToken();
+	cout << "\n\nteste: " << currentToken->cod << "\n\n";
+	cout << "\n\nteste: " << currentToken->lexema << "\n\n";
+
+	cout << "\n\nteste: " << currentToken->next->cod << "\n\n";	
 }//end principal
 
 
 /**
  * metodo do nao terminal S
  */
-void SintAnalyzer::S(){
-	if(currentToken->cod == 'G' || currentToken->cod == '2'){
-		DECL();
-	}
-	BLOCO();
+void SintAnalyzer::S(){	
+	
 }//end S
 

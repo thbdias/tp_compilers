@@ -47,7 +47,7 @@ void LexAnalyzer::testeLex(){
 	metodo que abre e le arquivo
 	@param arq: nome do arquivo que sera lido
  */
-void LexAnalyzer::lerArq(const char * arq){
+RegLexico LexAnalyzer::lerArq(const char * arq){
 
 	ifstream fin (arq);                     //abre arquivo para leitura
 
@@ -70,7 +70,7 @@ void LexAnalyzer::lerArq(const char * arq){
                 // tratar casos de erro lexico e comentario
             case 0:
                 cout << lineNumber << ":caractere invalido\n";
-            return;
+            exit(0);
 
             case 5:     // estado referente aos comentarios
                 resetMachine();
@@ -78,21 +78,21 @@ void LexAnalyzer::lerArq(const char * arq){
 
             case 12:
                 cout << lineNumber << ":caractere invalido\n";
-                return;
+                exit(0);
 
             case 14:
                 if(ch == '\n') lineNumber--;
                 cout << lineNumber << ":lexema nao identificado [ " << lexema << " ]\n";
-                return;
+                exit(0);
 
             case 18:
                 if(ch == '\n') lineNumber--;
                 cout << lineNumber << ":lexema nao identificado [ " << lexema << " ]\n";
-                return;
+                exit(0);
             case 24:
                 if(ch == '\n') lineNumber--;
                 cout << lineNumber << ":lexema nao identificado [ " << lexema << " ]\n";
-                return;
+                exit(0);
 
             default:
                 // Inserir token na tabela de simbolo e no registro lexico
@@ -114,6 +114,8 @@ void LexAnalyzer::lerArq(const char * arq){
 	fin.close();
 	//tabelaSimbolo.exibir();
 	//registroLexico.exibir();
+    
+    return registroLexico;
 }//end lerArq
 
 /**

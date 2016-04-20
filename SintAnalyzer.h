@@ -14,6 +14,7 @@
 	#include <iostream>
 	#include "SymbTab.h"
 	#include "RegLexico.h"
+	#include "LexAnalyzer.h"
 
 	typedef char byte;
 
@@ -21,12 +22,13 @@
 		private:
 			LexRecord *currentToken;
 			RegLexico registroLexico;
+			LexAnalyzer lex;
 
 		public:			
 			SintAnalyzer (); //construtor
 			~SintAnalyzer (); //destrutor
 			void teste();
-			void principal();
+			void principal(const char *arq);
 			void S();
 	};
 
