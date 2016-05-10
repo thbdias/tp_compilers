@@ -32,7 +32,7 @@
     typedef char byte;
 
     struct SymbolNode{
-        byte cod;            //codigo da classe do token
+        byte cod;            //numero do token
         std::string lexema;
         SymbolNode * next;   //proximo token
     };

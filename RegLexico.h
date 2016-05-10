@@ -27,12 +27,12 @@
 	//-----------------------------
 
     struct LexRecord{
-        byte cod;
+        byte cod;				//numero do token
         std::string lexema;
-        SymbolNode* adressTable;
-        std::string type;
-        int lineNumber;
-        LexRecord* next;
+        SymbolNode* adressTable; //endereco para tabela de simbolos
+        std::string type;       
+        int lineNumber;         //numero da linha
+        LexRecord* next;        //proximo registro lexico
     };
 
     //-----------------------------
