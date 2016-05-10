@@ -1,0 +1,155 @@
+S 					-> 	 [ { DECL } ] BLOCO 	
+
+DECL 				->	TIPO id #1 [ '=' VALOR#2 ] [ { ',' id#1 [ '=' VALOR#2 ] } ] ';' |	#1{id.classe = VAR}
+																							#1{id.tipo = TIPO.tipo}
+																							#2{se '=' for produzido
+																								se id.tipo != VALOR.tipo
+																									entao ERRO}			
+																							
+						'const' id#3 '=' VALOR ';'											#3{id.class = CONST}
+																							#3{id.tipo = VALOR.tipo}
+
+TIPO				->	 'integer'#4  |														#4{TIPO.tipo = inteiro}
+						 'byte'#5  |														#5{TIPO.tipo = byte}
+						 'boolean'#6  |														#6{TIPO.tipo = logico}
+						 'string'#7															#7{TIPO.tipo = string}
+
+VALOR				->	val_string#8  |														#8{VALOR.tipo = string}
+						num_hexa#9  |														#9{VALOR.tipo = byte}
+						val_logico#10  |													#10{VALOR.tipo = logico}
+						[ '-' ] num_decima#11												#11{VALOR.tipo = inteiro}
+
+-------------------------------------------------------------------------------------------------------------
+
+BLOCO 				-> '{' [ { COMANDO } ] '}'
+
+COMANDO	->	COMANDO_ATRIB  |  COMANDO_REPET  | COMANDO_TESTE  |  
+			COMANDO_NULO  |  COMANDO_LEITURA  |  COMANDO_ESCRITA
+
+COMANDO_ATRIB		-> 	id#12 '=' EXPRESSAO ';'												#12{se id.tipo != EXPRESSAO.tipo entao ERRO}
+																							#12{se id.classe != VAR entao ERRO}
+
+COMANDO_REPET		->	'while' EXPRESSAO#13 ( COMANDO  |  BLOCO )										#13{if EXPRESSAO.tipo != logico
+																										entao ERRO}
+
+COMANDO_TESTE		-> 'if' EXPRESSAO#14 'then' ( COMANDO | BLOCO ) [ 'else' ( COMANDO | BLOCO ) ]		#14{if EXPRESSAO.tipo != logico
+																										entao ERRO}
+
+COMANDO_NULO		-> ';'
+
+COMANDO_LEITURA		-> 'readln' ',' id#15 ';'												#15{se id.tipo nao pertence [inteiro, byte, string]
+																								entao ERRO}
+
+COMANDO_ESCRITA		-> ( 'write'  |  'writeln') ',' EXPRESSAO#16 [ { ',' EXPRESSAO#16 } ] ';'	#16{se EXPRESSAO.tipo nao pertence [byte, string, inteiro]
+																								entao ERRO}
+
+EXPRESSAO			->	EXP_4 [ { OPERADOR_P5 EXP_4 } ]#17									#17{se OPERADOR_P5 for produzido
+																									se OPERADOR_P5 = '=='
+																										se (ambos)EXP_4.tipo = string ou (ambos)EXP_4.tipo = numero
+																											entao EXPRESSAO.tipo = logico
+																										senao ERRO
+																									senao
+																										se (ambos)EXP_4.tipo = numero entao EXPRESSAO.tipo = logico
+																										senao ERRO
+																								senao EXPRESSAO.tipo = EXP_4.tipo
+																								se EXPRESSAO.tipo = numero E tamanho < 256 
+																									entao EXPRESSAO.tipo = inteiro
+																								senao EXPRESSAO.tipo = byte}
+
+OPERADOR_P5			->	'<' | '<=' | '>' | '>=' | '==' | '<>'
+
+EXP_4				->	['-'] EXP_3 [ { OPERADOR_P4 EXP_3} ]#18								#18{se '-' for produzido
+																									se EXP_3.tipo = inteiro entao EXP_4.tipo = inteiro
+																									senao ERRO
+																								senao
+																									se OPERADOR_P4 for produzido
+																										se OPERADOR_P4.tipo = logico
+																											se EXP_3.tipo = logico (ambos) entao EXP_4.tipo = logico
+																											senao ERRO
+																										senao 
+																											se OPERADOR_P4 = '+'
+																												se (ambos)EXP_3.tipo = numero(inteiro ou byte) ou (ambos) EXP_3.tipo = string
+																													entao EXP_4.tipo = EXP_3.tipo
+																												senao ERRO  
+																											senao 
+																												se EXP_3.tipo = numero (inteiro ou byte) (ambos) entao EXP_4.tipo = numero
+																												senao ERRO
+																									senao EXP_4.tipo = EXP_3.tipo}
+
+OPERADOR_P4			->	'-' |#19															#19{OPERADOR_P4.tipo = numero}
+						'+' |#20															#20{OPERADOR_P4.tipo = numero}
+						'or' #21															#21{OPERADOR_P4.tipo = logico}
+
+EXP_3				->	EXP_2 [ { OPERADOR_P3 EXP_2 } ]#22									#22{se OPERADOR_P3 for produzido
+																									se OPERADOR_P3.tipo = logico
+																										se EXP_2.tipo = logico (ambos) entao EXP_3.tipo = logico
+																										senao ERRO
+																									senao 
+																										se OPERADOR_P3.tipo = inteiro
+																											se EXP_2.tipo = numero(inteiro ou byte) (ambos) 
+																												entao EXP_3.tipo = inteiro
+																											senao ERRO  
+																										senao 
+																											se EXP_2.tipo = numero (inteiro ou byte) (ambos)
+																												se EXP_2.tipo = inteiro (um ou ambos) 
+																													entao EXP_3.tipo = inteiro
+																												senao EXP_3.tipo = numero
+																											senao ERRO
+																								senao EXP_3.tipo = EXP_2.tipo}
+
+OPERADOR_P3			->	'*' |#23															#23{OPERADOR_P3.tipo = numero}
+						'/' |#24															#24{OPERADOR_P3.tipo = inteiro}
+						'and'#25															#25{OPERADOR_P3.tipo = logico}
+
+EXP_2				->	['not'] EXP_1#26													$26{se 'not' for produzido 
+																									se EXP_1.tipo = logico entao EXP_2.tipo = logico
+																									senao ERRO
+																								senao EXP_2.tipo = EXP_1.tipo}
+											
+EXP_1				->	'(' EXPRESSAO ')' |#27												#27{EXP_1.tipo = EXPRESSAO.tipo}
+						CONST#28															#28{EXP_1.tipo = CONST.tipo}	
+
+CONST				->	num_decimal#29  |  													#29{CONST.tipo = inteiro}
+						num_hexa#30  |  													#30{CONST.tipo = byte}
+						val_logico#31  |  													#31{CONST.tipo = logico}
+						val_string#32 | 													#32{CONST.tipo = string}
+						id#33																#33{CONST.Tipo = id.tipo}
+
+--------------------------------------------------------------------------------------------------------------
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

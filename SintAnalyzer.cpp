@@ -406,6 +406,7 @@ void SintAnalyzer::match(char tipo){
 
 	if(currentToken == NULL){
       	cout << registroLexico.getLastToken()->lineNumber << ":fim de arquivo nao esperado";
+        exit(0);
 	}
 	else {
             cout << "token: " << tipo << " - " << currentToken->cod << "\n";
@@ -421,6 +422,7 @@ void SintAnalyzer::match(char tipo){
                     notNull = true;
 		} else {
 			cout << currentToken->lineNumber << ":token nao esperado [" << currentToken->lexema << "].";
+            exit(0);
 		}
 	}
 

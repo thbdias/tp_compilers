@@ -153,7 +153,7 @@ RegLexico LexAnalyzer::getRegistroLexico(){
 
     case 0: // estado q0 lendo c
 
-        if(c == ' ' || c == '\t' || c == '\n'){
+        if(c == ' ' || c == '\n'){
             break; // ignora
             } else {
                 switch(c) {

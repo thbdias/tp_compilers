@@ -15,7 +15,6 @@ const MAXITER=10;
   
   if n == 0
      writeln,"n eh zero";
-	 
   while naoTerminou {
     writeln,"Ola' ",nome;
     n=n+1;

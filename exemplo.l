@@ -12,7 +12,7 @@ const MAXITER=10;
   readln,nome;
   naoTerminou=TRUE;
   n=0;
-  while naoTerminou 
+  while naoTerminou {
     writeln,"Ola' ",nome;
     n=n+1;
     naoTerminou=n<MAXITER;
