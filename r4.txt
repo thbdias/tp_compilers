@@ -1,0 +1,5 @@
+token: 2 - 2
+token: H - H
+token: K - K
+token: D - H
+3:token nao esperado [t2].
